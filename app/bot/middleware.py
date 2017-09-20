@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from namba_one.settings import APP_TOKEN
+from bot_project.settings import APP_TOKEN
 
 
 class BotAuthMiddleware:

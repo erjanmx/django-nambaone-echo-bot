@@ -1,18 +1,18 @@
 import json
 from namba_one.bot import Bot
 from django.http import JsonResponse
-from namba_one.settings import NAMBA_ONE_API_TOKEN
-
-
-def message_new(bot, update):
-    update.message.reply_text('Hi, there!')
+from bot_project.settings import NAMBA_ONE_API_TOKEN
 
 
 def entry(request):
-    bot = Bot(NAMBA_ONE_API_TOKEN, message_new_handler=message_new)
+    bot = Bot(NAMBA_ONE_API_TOKEN)
+
+    '''
+    Add handlers
+    Handlers will be called with bot instance and nambaone.update.Update object
 
     bot.handler.add('message_new', message_new)
-
+    '''
     if request.method == 'POST':
         bot.run(json.loads(request.body))
 
