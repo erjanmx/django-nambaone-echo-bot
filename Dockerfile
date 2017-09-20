@@ -12,42 +12,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM ubuntu:16.04
+from ubuntu:precise
 
-MAINTAINER Dockerfiles
+maintainer baxeico
 
-# Install required packages and remove the apt packages cache when done.
+run echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-updates main restricted" | tee -a /etc/apt/sources.list.d/precise-updates.list
 
-RUN apt-get update && \
-    apt-get upgrade -y && \ 	
-    apt-get install -y \
-	git \
-	python3 \
-	python3-dev \
-	python3-setuptools \
-	python3-pip \
-	nginx \
-	supervisor \
-	sqlite3 && \
-	pip3 install -U pip setuptools && \
-   rm -rf /var/lib/apt/lists/*
+# update packages
+run apt-get update
+
+# install required packages
+run apt-get install -y python python-dev python-setuptools python-software-properties
+run apt-get install -y sqlite3
+run apt-get install -y supervisor
+
+# add nginx stable ppa
+run add-apt-repository -y ppa:nginx/stable
+# update packages after adding nginx repository
+run apt-get update
+# install latest stable nginx
+run apt-get install -y nginx
+
+# install pip
+run easy_install pip
 
 # install uwsgi now because it takes a little while
-RUN pip3 install uwsgi
+run pip install uwsgi
+
+# install our code
+add . /home/docker/code/
 
 # setup all the configfiles
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-COPY nginx-app.conf /etc/nginx/sites-available/default
-COPY supervisor-app.conf /etc/supervisor/conf.d/
+run echo "daemon off;" >> /etc/nginx/nginx.conf
+run rm /etc/nginx/sites-enabled/default
+run ln -s /home/docker/code/deploy_configs/nginx-app.conf /etc/nginx/sites-enabled/
+run ln -s /home/docker/code/deploy_configs/supervisor-app.conf /etc/supervisor/conf.d/
 
-# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
-# to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
+# run pip install
+run pip install -r /home/docker/code/app/requirements.txt
 
-COPY app/requirements.txt /home/docker/code/app/
-RUN pip3 install -r /home/docker/code/app/requirements.txt
+# install django, normally you would remove this step because your project would already
+# be installed in the code/app/ directory
+#run django-admin.py startproject website /home/docker/code/app/
+#run cd /home/docker/code/app && ./manage.py syncdb --noinput
 
-# add (the rest of) our code
-COPY . /home/docker/code/
-
-EXPOSE 80
-CMD ["supervisord", "-n"]
+expose 80
+cmd ["supervisord", "-n"]
