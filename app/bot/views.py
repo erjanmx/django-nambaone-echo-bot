@@ -1,5 +1,5 @@
 import json
-from namba_one.bot import Bot
+from nambaone.bot import Bot
 from django.http import JsonResponse
 from bot_project.settings import NAMBA_ONE_API_TOKEN
 
