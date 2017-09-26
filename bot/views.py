@@ -5,11 +5,11 @@ from django.http import JsonResponse
 from bot_project.settings import NAMBA_ONE_API_TOKEN
 from bot.events import event_user_follow, event_message_new
 
-logging.basicConfig(filename='bot.log', level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logger = logging.getLogger('bot')
 
 
 def error(bot, e):
-    logging.warning('Event "%s" caused error "%s"' % (e['event'], e['error']), exc_info=True)
+    logging.error('Event "%s" caused error "%s"' % (e['event'], e['error']), exc_info=True)
 
 
 def entry(request):
