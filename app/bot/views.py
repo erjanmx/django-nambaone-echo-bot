@@ -1,11 +1,19 @@
 import json
+import logging
 from nambaone.bot import Bot
 from django.http import JsonResponse
 from bot_project.settings import NAMBA_ONE_API_TOKEN
+from bot.events import event_user_follow, event_message_new
+
+logging.basicConfig(filename='bot.log', level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+
+
+def error(bot, e):
+    logging.warning('Event "%s" caused error "%s"' % (e['event'], e['error']), exc_info=True)
 
 
 def entry(request):
-    bot = Bot(NAMBA_ONE_API_TOKEN)
+    bot = Bot(NAMBA_ONE_API_TOKEN, error_handler=error)
 
     '''
     Add handlers
@@ -13,6 +21,9 @@ def entry(request):
 
     bot.handler.add('message_new', message_new)
     '''
+    bot.handler.add('user_follow', event_user_follow)
+    bot.handler.add('message_new', event_message_new)
+
     if request.method == 'POST':
         bot.run(json.loads(request.body))
 
