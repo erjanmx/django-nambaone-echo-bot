@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = []
+INSTALLED_APPS = [
+    'bot.apps.BotConfig'
+]
 
 MIDDLEWARE = [
     'bot.middleware.BotAuthMiddleware',
