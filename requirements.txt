@@ -1,4 +1,15 @@
+certifi==2017.7.27.1
+chardet==3.0.4
+cheroot==5.8.3
+CherryPy==11.0.0
 Django==1.11.5
-nambaone==0.2.2
-pytz==2017.2
 gunicorn==19.6.0
+idna==2.6
+nambaone==0.2.2
+portend==2.2
+pypiwin32==220
+pytz==2017.2
+requests==2.18.4
+six==1.11.0
+tempora==1.9
+urllib3==1.22
