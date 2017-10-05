@@ -14,9 +14,9 @@ def event_user_follow(bot, update):
     # create chat
     chat = bot.create_chat(update.user.id)
 
-    greeting_text = 'Привет, {}! Я echo-bot, повторяю все, что ты отправляешь.\n \
-    Я запущен на сервере Heroku и мой исходный код доступен на \
-    https://github.com/erjanmx/django-namba-one-bot'
+    greeting_text = 'Привет, {}!\nЯ echo-bot, пример бота на Django \
+запущеного на сервере Heroku, исходный код доступен на GitHub \
+\nПовторяю все, что ты мне отправляешь.'
 
     # welcome new user
     bot.send_message(
