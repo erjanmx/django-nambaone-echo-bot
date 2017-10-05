@@ -23,7 +23,7 @@
 1. Прочитать [документацию](https://devcenter.heroku.com/articles/git) по запуску на heroku 
 2. `heroku create`
 3. `git push heroku master`
-4 .  указать адрес запущенного heroku приложения в настройках бота на https://dashboard.namba1.co
+4. указать адрес запущенного heroku приложения в настройках бота на https://dashboard.namba1.co
 
 ### Локальный запуск
 
