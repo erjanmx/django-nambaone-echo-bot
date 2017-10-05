@@ -1,5 +1,7 @@
 # Django Namba-One Bot
 
+Sample NambaOne echo bot 
+
 Ready to deploy on heroku
 
 Set these variables:
