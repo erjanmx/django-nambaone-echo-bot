@@ -9,7 +9,8 @@ logger = logging.getLogger('bot')
 
 
 def error(bot, e):
-    logging.error('Event "%s" caused error "%s"' % (e['event'], e['error']), exc_info=True)
+    logging.error('Event "%s" caused error "%s"' % (e['event'], e['error']),
+                  exc_info=True)
 
 
 def entry(request):
@@ -18,8 +19,6 @@ def entry(request):
     '''
     Add handlers
     Handlers will be called with bot instance and nambaone.update.Update object
-
-    bot.handler.add('message_new', message_new)
     '''
     bot.handler.add('user_follow', event_user_follow)
     bot.handler.add('message_new', event_message_new)
