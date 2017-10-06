@@ -1,6 +1,6 @@
 # Django Namba-One Bot
 
-[![Build Status](https://travis-ci.org/erjanmx/django-namba-one-bot.svg?branch=master)](https://travis-ci.org/erjanmx/django-namba-one-bot)
+[![Build Status](https://travis-ci.org/erjanmx/django-nambaone-echo-bot.svg?branch=master)](https://travis-ci.org/erjanmx/django-nambaone-echo-bot)
 
 Пример бота для NambaOne написанного с использованием Django и библиотеки [python-nambaone-bot](https://github.com/erjanmx/python-nambaone-bot) для работы с BotAPI
 
@@ -14,16 +14,17 @@
 
 Вне зависимости от типа запуска необходимо указать следующие переменные окружения
 
-- SECRET_KEY
-- APP_TOKEN
-- NAMBA_ONE_API_TOKEN
+- SECRET_KEY - ключ для Django приложения
+- APP_TOKEN - токен для доступа к боту (значение GET параметра `token`)
+- NAMBA_ONE_API_TOKEN - токен бота с dashboard.namba1.co
 
 ### Heroku
 
-1. Прочитать [документацию](https://devcenter.heroku.com/articles/git) по запуску на heroku 
-2. `heroku create`
-3. `git push heroku master`
-4. указать адрес запущенного heroku приложения в настройках бота на https://dashboard.namba1.co
+1. склонировать репозиторий
+2. Прочитать [документацию](https://devcenter.heroku.com/articles/git) по запуску на heroku 
+3. `heroku create`
+4. `git push heroku master`
+5. указать адрес запущенного heroku приложения в настройках бота на https://dashboard.namba1.co
 
 ### Локальный запуск
 
