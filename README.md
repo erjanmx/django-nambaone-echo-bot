@@ -1,8 +1,10 @@
-# Django Namba-One Bot
+# Django NambaOne Echo Bot
 
 [![Build Status](https://travis-ci.org/erjanmx/django-nambaone-echo-bot.svg?branch=master)](https://travis-ci.org/erjanmx/django-nambaone-echo-bot)
 
-Пример бота для NambaOne написанного с использованием Django и библиотеки [python-nambaone-bot](https://github.com/erjanmx/python-nambaone-bot) для работы с BotAPI
+Пример бота для NambaOne написанного с использованием Django и библиотеки [python-nambaone-bot](https://github.com/erjanmx/python-nambaone-bot) для работы с BotAPI.
+
+Приветствует подключенного пользователя и повторяет все его сообщения.
 
 Бот настроен для запуска на серверах Heroku.
 
