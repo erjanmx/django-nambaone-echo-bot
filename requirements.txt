@@ -5,7 +5,7 @@ CherryPy==11.0.0
 Django==1.11.5
 gunicorn==19.6.0
 idna==2.6
-nambaone==0.2.2
+nambaone==0.2.3
 portend==2.2
 pytz==2017.2
 requests==2.18.4
