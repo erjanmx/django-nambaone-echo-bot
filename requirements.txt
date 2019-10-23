@@ -8,7 +8,7 @@ idna==2.6
 nambaone==0.2.3
 portend==2.2
 pytz==2017.2
-requests==2.18.4
+requests==2.20.0
 six==1.11.0
 tempora==1.9
 urllib3==1.22
