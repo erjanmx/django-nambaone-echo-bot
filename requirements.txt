@@ -2,7 +2,7 @@ certifi==2017.7.27.1
 chardet==3.0.4
 cheroot==5.8.3
 CherryPy==11.0.0
-Django==1.11.23
+Django==1.11.29
 gunicorn==19.6.0
 idna==2.6
 nambaone==0.2.3
